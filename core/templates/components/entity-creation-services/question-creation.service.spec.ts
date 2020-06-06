@@ -15,11 +15,11 @@
  * @fileoverview Unit test for QuestionCreationService
  */
 
- import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
- import { TestBed, fakeAsync, flushMicrotasks } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { TestBed, fakeAsync, flushMicrotasks } from '@angular/core/testing';
 
- import { QuestionCreationService } from 
-  'components/entity-creation-services/question-creation.service.ts';
+import { QuestionCreationService } from
+'components/entity-creation-services/question-creation.service.ts';
 
 describe('Question Creation service', () => {
   let questionCreationService: QuestionCreationService;
@@ -29,7 +29,7 @@ describe('Question Creation service', () => {
 
   let SUCCESS_STATUS_CODE = 200;
   let ERROR_STATUS_CODE = 500;
-  let questionDict = {}
+  let questionDict = {};
 
   beforeEach(()=>{
     TestBed.configureTestingModule({
@@ -43,84 +43,81 @@ describe('Question Creation service', () => {
     sampleQuestionBackendDict = {
       id: 'question_id',
       question_state_data: {
-      content: {
-        html: 'Question 1',
-        content_id: 'content_1'
-      },
-      interaction: {
-        answer_groups: [{
-        outcome: {
-          dest: 'outcome 1',
-          feedback: {
-          content_id: 'content_5',
-          html: ''
-          },
-          labelled_as_correct: true,
-          param_changes: [],
-          refresher_exploration_id: null
+        content: {
+          html: 'Question 1',
+          content_id: 'content_1'
         },
-        rule_specs: [{
-          inputs: {
-          x: 10
+        interaction: {
+          answer_groups: [{
+            outcome: {
+              dest: 'outcome 1',
+              feedback: {
+                content_id: 'content_5',
+                html: ''
+              },
+              labelled_as_correct: true,
+              param_changes: [],
+              refresher_exploration_id: null
+            },
+            rule_specs: [{
+              inputs: {
+                x: 10
+              },
+              rule_type: 'Equals'
+            }],
+          }],
+          confirmed_unclassified_answers: [],
+          customization_args: {},
+          default_outcome: {
+            dest: null,
+            feedback: {
+              html: 'Correct Answer',
+              content_id: 'content_2'
+            },
+            param_changes: [],
+            labelled_as_correct: false
           },
-          rule_type: 'Equals'
-        }],
-        }],
-        confirmed_unclassified_answers: [],
-        customization_args: {},
-        default_outcome: {
-        dest: null,
-        feedback: {
-          html: 'Correct Answer',
-          content_id: 'content_2'
+          hints: [
+          {
+            hint_content: {
+              html: 'Hint 1',
+              content_id: 'content_3'
+            }
+          }],
+          solution: {
+            correct_answer: 'This is the correct answer',
+            answer_is_exclusive: false,
+            explanation: {
+              html: 'Solution explanation',
+              content_id: 'content_4'
+            }
+          },
+          id: 'TextInput'
         },
         param_changes: [],
-        labelled_as_correct: false
-        },
-        hints: [
-        {
-          hint_content: {
-          html: 'Hint 1',
-          content_id: 'content_3'
+        recorded_voiceovers: {
+          voiceovers_mapping: {
+            content_1: {},
+            content_2: {},
+            content_3: {},
+            content_4: {},
+            content_5: {}
           }
-        }
-        ],
-        solution: {
-        correct_answer: 'This is the correct answer',
-        answer_is_exclusive: false,
-        explanation: {
-          html: 'Solution explanation',
-          content_id: 'content_4'
-        }
         },
-        id: 'TextInput'
-      },
-      param_changes: [],
-      recorded_voiceovers: {
-        voiceovers_mapping: {
-        content_1: {},
-        content_2: {},
-        content_3: {},
-        content_4: {},
-        content_5: {}
-        }
-      },
-      written_translations: {
-        translations_mapping: {
-        content_1: {},
-        content_2: {},
-        content_3: {},
-        content_4: {},
-        content_5: {}
-        }
-      },
+        written_translations: {
+          translations_mapping: {
+            content_1: {},
+            content_2: {},
+            content_3: {},
+            content_4: {},
+            content_5: {}
+          }
+        },
         solicit_answer_details: false
       },
       language_code: 'en',
       version: 1
     };
-
-
   });
 
   afterEach(()=>{
@@ -135,7 +132,8 @@ describe('Question Creation service', () => {
       questionCreationService.createNew(sampleQuestionBackendDict).then(
         successHandler, failHandler);
 
-      let req = httpTestingController.expectOne('/question_editor_handler/create_new');
+      let req = httpTestingController.expectOne(
+        '/question_editor_handler/create_new');
       expect(req.request.method).toEqual('POST');
       req.flush({question_dict: sampleQuestionBackendDict});
 
@@ -143,7 +141,6 @@ describe('Question Creation service', () => {
 
       expect(successHandler).toHaveBeenCalled();
       expect(failHandler).not.toHaveBeenCalled();
-      
     })
   );
 
@@ -155,7 +152,8 @@ describe('Question Creation service', () => {
       questionCreationService.createNew(sampleQuestionBackendDict).then(
         successHandler, failHandler);
 
-      let req = httpTestingController.expectOne('/question_editor_handler/create_new');
+      let req = httpTestingController.expectOne(
+        '/question_editor_handler/create_new');
       expect(req.request.method).toEqual('POST');
       req.flush('Error creating a new question', {
         status: ERROR_STATUS_CODE,
@@ -168,4 +166,4 @@ describe('Question Creation service', () => {
       expect(successHandler).not.toHaveBeenCalled();
     })
   );
-})
+});
