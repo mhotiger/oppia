@@ -41,7 +41,7 @@ describe('Question Creation service', () => {
     questionCreationService = TestBed.get(QuestionCreationService);
     httpTestingController = TestBed.get(HttpTestingController);
 
-    sampleQuestionBackendDict = {
+    var sampleQuestionBackendDict = {
       id: 'question_id',
       question_state_data: {
         content: {
