@@ -295,6 +295,7 @@
 /core/storage/question/ @aks681
 /core/templates/components/concept-card/ @kevintab95
 /core/templates/components/entity-creation-services/question-creation.service.ts @kevintab95
+/core/templates/components/entity-creation-services/question-creation.service.spec.ts @mhotiger
 /core/templates/components/score-ring/ @kevintab95
 /core/templates/components/skill-mastery/ @kevintab95
 /core/templates/components/skills-mastery-list/ @kevintab95
