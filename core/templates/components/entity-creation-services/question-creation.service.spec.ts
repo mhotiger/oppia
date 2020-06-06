@@ -31,6 +31,83 @@ describe('Question Creation service', () => {
   let SUCCESS_STATUS_CODE = 200;
   let ERROR_STATUS_CODE = 500;
   let questionDict = {};
+  let sampleQuestionBackendDict = {
+    id: 'question_id',
+    question_state_data: {
+      content: {
+        html: 'Question 1',
+        content_id: 'content_1'
+      },
+      interaction: {
+        answer_groups: [{
+          outcome: {
+            dest: 'outcome 1',
+            feedback: {
+              content_id: 'content_5',
+              html: ''
+            },
+            labelled_as_correct: true,
+            param_changes: [],
+            refresher_exploration_id: null
+          },
+          rule_specs: [{
+            inputs: {
+              x: 10
+            },
+            rule_type: 'Equals'
+          }],
+        }],
+        confirmed_unclassified_answers: [],
+        customization_args: {},
+        default_outcome: {
+          dest: null,
+          feedback: {
+            html: 'Correct Answer',
+            content_id: 'content_2'
+          },
+          param_changes: [],
+          labelled_as_correct: false
+        },
+        hints: [{
+          hint_content: {
+            html: 'Hint 1',
+            content_id: 'content_3'
+          }
+        }],
+        solution: {
+          correct_answer: 'This is the correct answer',
+          answer_is_exclusive: false,
+          explanation: {
+            html: 'Solution explanation',
+            content_id: 'content_4'
+          }
+        },
+        id: 'TextInput'
+      },
+      param_changes: [],
+      recorded_voiceovers: {
+        voiceovers_mapping: {
+          content_1: {},
+          content_2: {},
+          content_3: {},
+          content_4: {},
+          content_5: {}
+        }
+      },
+      written_translations: {
+        translations_mapping: {
+          content_1: {},
+          content_2: {},
+          content_3: {},
+          content_4: {},
+          content_5: {}
+        }
+      },
+      solicit_answer_details: false
+    },
+    language_code: 'en',
+    version: 1
+  };
 
   beforeEach(()=>{
     TestBed.configureTestingModule({
@@ -41,83 +118,7 @@ describe('Question Creation service', () => {
     questionCreationService = TestBed.get(QuestionCreationService);
     httpTestingController = TestBed.get(HttpTestingController);
 
-    var sampleQuestionBackendDict = {
-      id: 'question_id',
-      question_state_data: {
-        content: {
-          html: 'Question 1',
-          content_id: 'content_1'
-        },
-        interaction: {
-          answer_groups: [{
-            outcome: {
-              dest: 'outcome 1',
-              feedback: {
-                content_id: 'content_5',
-                html: ''
-              },
-              labelled_as_correct: true,
-              param_changes: [],
-              refresher_exploration_id: null
-            },
-            rule_specs: [{
-              inputs: {
-                x: 10
-              },
-              rule_type: 'Equals'
-            }],
-          }],
-          confirmed_unclassified_answers: [],
-          customization_args: {},
-          default_outcome: {
-            dest: null,
-            feedback: {
-              html: 'Correct Answer',
-              content_id: 'content_2'
-            },
-            param_changes: [],
-            labelled_as_correct: false
-          },
-          hints: [{
-            hint_content: {
-              html: 'Hint 1',
-              content_id: 'content_3'
-            }
-          }],
-          solution: {
-            correct_answer: 'This is the correct answer',
-            answer_is_exclusive: false,
-            explanation: {
-              html: 'Solution explanation',
-              content_id: 'content_4'
-            }
-          },
-          id: 'TextInput'
-        },
-        param_changes: [],
-        recorded_voiceovers: {
-          voiceovers_mapping: {
-            content_1: {},
-            content_2: {},
-            content_3: {},
-            content_4: {},
-            content_5: {}
-          }
-        },
-        written_translations: {
-          translations_mapping: {
-            content_1: {},
-            content_2: {},
-            content_3: {},
-            content_4: {},
-            content_5: {}
-          }
-        },
-        solicit_answer_details: false
-      },
-      language_code: 'en',
-      version: 1
-    };
+    
   });
 
   afterEach(()=>{
