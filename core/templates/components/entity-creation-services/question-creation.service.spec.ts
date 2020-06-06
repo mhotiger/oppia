@@ -15,11 +15,12 @@
  * @fileoverview Unit test for QuestionCreationService
  */
 
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule,
+  HttpTestingController } from '@angular/common/http/testing';
 import { TestBed, fakeAsync, flushMicrotasks } from '@angular/core/testing';
 
 import { QuestionCreationService } from
-'components/entity-creation-services/question-creation.service.ts';
+  'components/entity-creation-services/question-creation.service.ts';
 
 describe('Question Creation service', () => {
   let questionCreationService: QuestionCreationService;
@@ -77,8 +78,7 @@ describe('Question Creation service', () => {
             param_changes: [],
             labelled_as_correct: false
           },
-          hints: [
-          {
+          hints: [{
             hint_content: {
               html: 'Hint 1',
               content_id: 'content_3'
