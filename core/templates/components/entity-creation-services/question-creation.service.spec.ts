@@ -117,8 +117,6 @@ describe('Question Creation service', () => {
 
     questionCreationService = TestBed.get(QuestionCreationService);
     httpTestingController = TestBed.get(HttpTestingController);
-
-    
   });
 
   afterEach(()=>{
