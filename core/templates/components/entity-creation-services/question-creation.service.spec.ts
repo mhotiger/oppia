@@ -16,7 +16,7 @@
  */
 
  import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
- import { TestBed, fakeAsync flushMicrotasks } from '@angular/core/testing';
+ import { TestBed, fakeAsync, flushMicrotasks } from '@angular/core/testing';
 
  import { QuestionCreationService } from 
   'components/entity-creation-services/question-creation.service.ts';
